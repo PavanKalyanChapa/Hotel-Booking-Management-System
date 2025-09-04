@@ -1,0 +1,196 @@
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { FaArrowLeft, FaStar } from "react-icons/fa";
+
+export default function DestinationDetails() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [destination, setDestination] = useState(null);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [itineraries, setItineraries] = useState([]);
+  const [loadingItinerary, setLoadingItinerary] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/destinationsData?destinationId=${id}`)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setDestination(res.data[0]);
+        } else {
+          setDestination("not-found");
+        }
+      })
+      .catch(() => setDestination("not-found"));
+  }, [id]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/tripItineraries?destinationId=${id}`)
+      .then((res) => {
+        setItineraries(res.data);
+        setLoadingItinerary(false);
+      })
+      .catch(() => setLoadingItinerary(false));
+  }, [id]);
+
+  if (destination === "not-found") {
+    return (
+      <div className="container my-5 text-center">
+        <h3>Destination guide not found</h3>
+        <button className="btn btn-primary mt-3" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
+      </div>
+    );
+  }
+
+  if (!destination) {
+    return (
+      <div className="container text-center my-5">
+        <div className="spinner-border text-primary" />
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container my-4">
+      {/* Back button */}
+      <button className="btn btn-outline-secondary mb-3" onClick={() => navigate(-1)}>
+        <FaArrowLeft /> Back
+      </button>
+
+      {/* Destination Title */}
+      <h2 className="fw-bold">{destination.destinationName}</h2>
+      <p className="text-muted">{destination.destinationSummary}</p>
+
+      {/* Nav Tabs */}
+      <ul className="nav nav-tabs mt-4">
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "overview" ? "active" : ""}`}
+            onClick={() => setActiveTab("overview")}
+          >
+            Overview
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "itinerary" ? "active" : ""}`}
+            onClick={() => setActiveTab("itinerary")}
+          >
+            Itinerary Planner
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "reviews" ? "active" : ""}`}
+            onClick={() => setActiveTab("reviews")}
+          >
+            Reviews ({destination.reviews.length})
+          </button>
+        </li>
+      </ul>
+
+      {/* Tab Content */}
+      <div className="tab-content mt-3">
+        {activeTab === "overview" && (
+          <div className="tab-pane active">
+            <h4>History</h4>
+            <p>{destination.history}</p>
+
+            <h4>Culture</h4>
+            <p>{destination.culture}</p>
+
+            <h4>Top Attractions</h4>
+            <ul>
+              {destination.touristAttractions.map((place, i) => (
+                <li key={i}>{place}</li>
+              ))}
+            </ul>
+
+            <h4 className="mt-4">Recommended Stays</h4>
+            {destination.recommendedHotels.map((hotel, i) => (
+              <div key={i} className="mb-2">
+                <strong>{hotel.hotelName}</strong> - ${hotel.price}+{" "}
+                <span className="text-warning">
+                  {Array(Math.round(hotel.rating))
+                    .fill()
+                    .map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                </span>
+              </div>
+            ))}
+
+            <h4 className="mt-4">Dining Options</h4>
+            {destination.recommendedRestaurants.map((res, i) => (
+              <div key={i} className="mb-2">
+                <strong>{res.restaurantName}</strong> ({res.cuisine}) -{" "}
+                <span className="text-warning">
+                  {Array(Math.round(res.rating))
+                    .fill()
+                    .map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeTab === "itinerary" && (
+          <div className="tab-pane active">
+            <h4>Itinerary Planner</h4>
+            {loadingItinerary ? (
+              <p>Loading itineraries...</p>
+            ) : itineraries.length === 0 ? (
+              <div className="text-center">
+                <p>No itineraries found for this destination.</p>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => alert("Open Create Itinerary Form")}
+                >
+                  Create Itinerary
+                </button>
+              </div>
+            ) : (
+              <div className="list-group">
+                {itineraries.map((trip) => (
+                  <div key={trip.id} className="list-group-item mb-2 shadow-sm">
+                    <h5>{trip.destination}</h5>
+                    <p>
+                      <strong>Duration:</strong> {trip.duration}
+                    </p>
+                    <p>
+                      <strong>Activities:</strong> {trip.activities.join(", ")}
+                    </p>
+                    <p>
+                      <strong>Lodging:</strong> {trip.lodging}
+                    </p>
+                    <p>
+                      <strong>Dining:</strong> {trip.dining}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {activeTab === "reviews" && (
+          <div className="tab-pane active">
+            <h4>User Reviews</h4>
+            {destination.reviews.map((rev, i) => (
+              <div key={i} className="border rounded p-2 mb-2">
+                <strong>{rev.user || "Anonymous"}</strong> - ⭐ {rev.rating}
+                <p>{rev.comment}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
