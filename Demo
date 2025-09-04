@@ -1,20 +1,64 @@
-// DestinationCards.jsx
-import React from "react";
+{
+  "destinationGuides": [
+    {
+      "id": "1",
+      "destinationId": 1001,
+      "title": "Bali Destination Guide",
+      "summary": "Explore the beauty of Bali with our comprehensive guide.",
+      "photo": "./BALI.png",
+      "reviews": 234
+    },
+    {
+      "id": "2",
+      "destinationId": 1002,
+      "title": "Paris Destination Guide",
+      "summary": "Discover the magic of Paris, the City of Lights.",
+      "photo": "./PARIS.png",
+      "reviews": 139
+    }
+  ],
+  "destinationsData": [
+    {
+      "destinationId": 1001,
+      "destinationName": "Bali, Indonesia",
+      "destinationSummary": "Explore the beautiful beaches and rich culture of Bali with our comprehensive guide.",
+      "history": "Bali was inhabited around 2000 BC by Austronesian people...",
+      "culture": "Balinese culture is a mix of Balinese Hindu religion and Balinese customs...",
+      "touristAttractions": ["Tanah Lot Temple", "Uluwatu Temple", "Tegalalang Rice Terraces", "Mount Batur", "Ubud Monkey Forest"],
+      "recommendedHotels": [
+        { "hotelName": "Four Seasons Resort Bali", "rating": 4.9, "price": 400 },
+        { "hotelName": "COMO Shambhala Estate", "rating": 4.8, "price": 300 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Locavore", "rating": 4.9, "cuisine": "Modern Indonesian" },
+        { "restaurantName": "Mozaic Restaurant", "rating": 4.8, "cuisine": "French-Asian Fusion" }
+      ],
+      "reviews": [
+        { "user": "user123", "rating": 5, "comment": "Amazing guide, helped me plan my trip perfectly!" },
+        { "user": "user456", "rating": 4, "comment": "Bali is beautiful but very crowded." }
+      ]
+    }
+  ]
+}
+
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import { FaStar, FaRegStar, FaHeart } from "react-icons/fa";
 
-const DestinationCards = ({ guides }) => {
-  // Helper to render stars
+export default function DestinationCard({ guide }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => setIsFavorite((prev) => !prev);
+
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
-    const halfStars = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (halfStars ? 1 : 0);
+    const emptyStars = 5 - fullStars;
 
     return (
       <>
         {Array(fullStars).fill().map((_, i) => (
           <FaStar key={`full-${i}`} className="text-warning" />
         ))}
-        {halfStars && <FaStar className="text-warning" />}
         {Array(emptyStars).fill().map((_, i) => (
           <FaRegStar key={`empty-${i}`} className="text-warning" />
         ))}
@@ -23,44 +67,154 @@ const DestinationCards = ({ guides }) => {
   };
 
   return (
-    <div className="container my-5">
-      <h2 className="fw-bold text-center">Featured Destinations</h2>
-      <p className="text-center text-muted mb-4">
-        Discover our most popular destination guides
-      </p>
-      <div className="row">
-        {guides.map((guide) => (
-          <div key={guide.id} className="col-md-4 mb-4">
-            <div className="card h-100 shadow-sm border-0">
-              <img
-                src={guide.photo}
-                className="card-img-top"
-                alt={guide.title}
-                style={{ height: "200px", objectFit: "cover" }}
-              />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">{guide.title}</h5>
-                <p className="card-text text-muted">{guide.summary}</p>
+    <div className="card h-100 shadow-sm border-0">
+      <img
+        src={guide.photo}
+        className="card-img-top"
+        alt={guide.title}
+        style={{ height: "200px", objectFit: "cover" }}
+      />
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title">{guide.title}</h5>
+        <p className="card-text text-muted">{guide.summary}</p>
 
-                {/* Ratings & Reviews */}
-                <div className="mt-auto d-flex justify-content-between align-items-center">
-                  <div>
-                    {renderStars(4)} {/* hardcoded example: rating=4 */}
-                    <small className="text-muted d-block">
-                      ({guide.reviews || 200} reviews)
-                    </small>
-                  </div>
-
-                  {/* Favorite Icon */}
-                  <FaHeart className="text-muted" style={{ cursor: "pointer" }} />
-                </div>
-              </div>
-            </div>
+        <div className="mt-auto d-flex justify-content-between align-items-center">
+          <div>
+            {renderStars(4)}
+            <small className="text-muted d-block">
+              ({guide.reviews || 200} reviews)
+            </small>
           </div>
-        ))}
+          <FaHeart
+            className={isFavorite ? "text-danger" : "text-muted"}
+            style={{ cursor: "pointer", fontSize: "20px" }}
+            onClick={toggleFavorite}
+          />
+        </div>
+
+        <div className="text-center mt-3">
+          <Link
+            to={`/destinations/${guide.destinationId}`}
+            className="btn btn-sm btn-primary"
+          >
+            View More
+          </Link>
+        </div>
       </div>
     </div>
   );
-};
+}
 
-export default DestinationCards;
+
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { FaArrowLeft, FaStar } from "react-icons/fa";
+
+export default function DestinationDetails() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [destination, setDestination] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/destinationsData?destinationId=${id}`)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setDestination(res.data[0]);
+        } else {
+          setDestination("not-found");
+        }
+      })
+      .catch(() => setDestination("not-found"));
+  }, [id]);
+
+  if (destination === "not-found") {
+    return (
+      <div className="container my-5 text-center">
+        <h3>Destination guide not found</h3>
+        <button className="btn btn-primary mt-3" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
+      </div>
+    );
+  }
+
+  if (!destination) {
+    return (
+      <div className="container text-center my-5">
+        <div className="spinner-border text-primary" />
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container my-4">
+      <button className="btn btn-outline-secondary mb-3" onClick={() => navigate(-1)}>
+        <FaArrowLeft /> Back
+      </button>
+
+      <h2 className="fw-bold">{destination.destinationName}</h2>
+      <p className="text-muted">{destination.destinationSummary}</p>
+
+      <h4 className="mt-4">History</h4>
+      <p>{destination.history}</p>
+
+      <h4 className="mt-4">Culture</h4>
+      <p>{destination.culture}</p>
+
+      <h4 className="mt-4">Top Attractions</h4>
+      <ul>
+        {destination.touristAttractions.map((place, i) => (
+          <li key={i}>{place}</li>
+        ))}
+      </ul>
+
+      <h4 className="mt-4">Recommended Stays</h4>
+      {destination.recommendedHotels.map((hotel, i) => (
+        <div key={i} className="mb-2">
+          <strong>{hotel.hotelName}</strong> - ${hotel.price}+{" "}
+          <span className="text-warning">
+            {Array(Math.round(hotel.rating)).fill().map((_, i) => <FaStar key={i} />)}
+          </span>
+        </div>
+      ))}
+
+      <h4 className="mt-4">Dining Options</h4>
+      {destination.recommendedRestaurants.map((res, i) => (
+        <div key={i} className="mb-2">
+          <strong>{res.restaurantName}</strong> ({res.cuisine}) -{" "}
+          <span className="text-warning">
+            {Array(Math.round(res.rating)).fill().map((_, i) => <FaStar key={i} />)}
+          </span>
+        </div>
+      ))}
+
+      <h4 className="mt-4">Reviews</h4>
+      {destination.reviews.map((rev, i) => (
+        <div key={i} className="border rounded p-2 mb-2">
+          <strong>{rev.user || "Anonymous"}</strong> - ⭐ {rev.rating}
+          <p>{rev.comment}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import DestinationDetails from "./pages/DestinationDetails";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/destinations/:id" element={<DestinationDetails />} />
+    </Routes>
+  );
+}
+
+export default App;
+
+
