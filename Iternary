@@ -224,3 +224,39 @@ export default function CreateItinerary({ destination, onItineraryCreated }) {
   );
 }
 
+
+
+export default function ItineraryList({ itineraries }) {
+  return (
+    <div className="row">
+      {itineraries.map((itinerary) => (
+        <div key={itinerary.id} className="col-md-6 col-lg-4 mb-4">
+          <div className="card shadow-sm h-100">
+            <div className="card-body">
+              <h5 className="card-title">{itinerary.destination}</h5>
+              <p className="card-text">
+                <strong>Duration:</strong> {itinerary.duration}
+              </p>
+              <p className="card-text">
+                <strong>Lodging:</strong> {itinerary.lodging}
+              </p>
+              <p className="card-text">
+                <strong>Dining:</strong> {itinerary.dining}
+              </p>
+              {itinerary.activities && itinerary.activities.length > 0 && (
+                <div className="mb-2">
+                  <strong>Activities:</strong>
+                  <ul className="mt-2">
+                    {itinerary.activities.map((act, i) => (
+                      <li key={i}>{act}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
