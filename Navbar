@@ -1,0 +1,131 @@
+import { Link } from "react-router-dom";
+import { FaCompass, FaHeart, FaUser } from "react-icons/fa";
+import { useState } from "react";
+
+const Navbar = ({ isAuthenticated, isAdmin, user, logout }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const logoIcon = { color: "#135677", fontSize: "1.5rem", marginRight: "8px" };
+  const logoText = { color: "#135677", fontWeight: "bold", fontSize: "1.25rem" };
+
+  const signinStyle = {
+    backgroundColor: "#135677",
+    border: "none",
+    padding: "6px 14px",
+    borderRadius: "6px",
+    color: "#FFFFFF",
+    textDecoration: "none",
+    marginRight: "8px",
+  };
+
+  const signupStyle = {
+    backgroundColor: "#F88379",
+    color: "#FFFFFF",
+    border: "none",
+    padding: "6px 14px",
+    borderRadius: "6px",
+    textDecoration: "none",
+  };
+
+  return (
+    <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top border-bottom">
+      <div className="container">
+        {/* Logo */}
+        <Link to="/" className="navbar-brand d-flex align-items-center">
+          <FaCompass style={logoIcon} />
+          <span style={logoText}>TravelTrove</span>
+        </Link>
+
+        {/* Mobile Toggle */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Collapsible Content */}
+        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`} id="navbarContent">
+          <ul className="navbar-nav mx-auto mb-2 mb-md-0">
+            <li className="nav-item">
+              <Link to="/destinations" className="nav-link text-secondary" onClick={() => setIsOpen(false)}>
+                Destinations
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/itinerary" className="nav-link text-secondary" onClick={() => setIsOpen(false)}>
+                Itineraries
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/groups" className="nav-link text-secondary" onClick={() => setIsOpen(false)}>
+                Groups
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/reviews" className="nav-link text-secondary" onClick={() => setIsOpen(false)}>
+                Reviews
+              </Link>
+            </li>
+          </ul>
+
+          {/* Auth Buttons */}
+          <div className="d-flex align-items-center">
+            {isAuthenticated ? (
+              <>
+                <button className="btn btn-outline-secondary me-2">
+                  <FaHeart />
+                </button>
+                <div>
+                  <FaUser className="me-2" />
+                  <span>{user?.name || user?.email}</span>
+                  {isAdmin && (
+                    <Link to="/admin" className="btn btn-sm btn-outline-dark ms-2">
+                      Admin
+                    </Link>
+                  )}
+                  <button className="btn btn-sm btn-danger ms-2" onClick={logout}>
+                    Logout
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="d-flex">
+                <Link to="/auth?mode=login" style={signinStyle} onClick={() => setIsOpen(false)}>
+                  Sign In
+                </Link>
+                <Link to="/auth?mode=register" style={signupStyle} onClick={() => setIsOpen(false)}>
+                  Sign Up
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Home/home";
+import Navbar from "./components/Navbar";
+import DestinationDetails from "./components/Destination/DestinationDetails";
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/destinations/:id" element={<DestinationDetails />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
