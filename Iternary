@@ -260,3 +260,74 @@ export default function ItineraryList({ itineraries }) {
     </div>
   );
 }
+
+
+
+
+
+
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+export default function ItineraryList({ destinationId }) {
+  const [itineraries, setItineraries] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/tripItineraries?destinationId=${destinationId}`)
+      .then((res) => {
+        setItineraries(res.data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [destinationId]);
+
+  if (loading) {
+    return (
+      <div className="text-center my-4">
+        <div className="spinner-border text-primary" role="status"></div>
+        <p>Loading itineraries...</p>
+      </div>
+    );
+  }
+
+  if (itineraries.length === 0) {
+    return (
+      <div className="alert alert-info mt-3">
+        No itineraries available for this destination.  
+        <br />
+        <button className="btn btn-sm btn-primary mt-2">Create New Itinerary</button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="row mt-3">
+      {itineraries.map((itinerary) => (
+        <div className="col-md-6 mb-4" key={itinerary.id}>
+          <div className="card h-100 shadow-sm border-0">
+            <div className="card-body">
+              <h5 className="card-title fw-bold">{itinerary.destination}</h5>
+              <p className="text-muted">Duration: {itinerary.duration}</p>
+
+              <h6 className="mt-3">Activities</h6>
+              <ul className="mb-2">
+                {itinerary.activities.map((act, i) => (
+                  <li key={i}>{act}</li>
+                ))}
+              </ul>
+
+              <h6>Lodging</h6>
+              <p>{itinerary.lodging}</p>
+
+              <h6>Dining</h6>
+              <p>{itinerary.dining}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
