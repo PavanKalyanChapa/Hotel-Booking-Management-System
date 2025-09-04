@@ -1,0 +1,203 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ItineraryTabs from "./ItineraryTabs";
+
+export default function DestinationDetails() {
+  const { id } = useParams();
+  const [destination, setDestination] = useState(null);
+
+  useEffect(() => {
+    const fetchDestination = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/destinationGuides/${id}`);
+        setDestination(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchDestination();
+  }, [id]);
+
+  if (!destination) {
+    return <p className="text-center mt-5">Loading destination details...</p>;
+  }
+
+  return (
+    <div className="container my-5">
+      <h2 className="mb-3">{destination.title}</h2>
+      <p>{destination.summary}</p>
+      <img
+        src={destination.photo}
+        alt={destination.title}
+        className="img-fluid rounded mb-4"
+      />
+
+      {/* 👉 Itinerary Tabs specific to this destination */}
+      <h4 className="mt-5">Plan Your Trip</h4>
+      <ItineraryTabs destination={destination.title} />
+    </div>
+  );
+}
+
+
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+import CreateItinerary from "./CreateItinerary";
+import ItineraryList from "./ItineraryList";
+
+export default function ItineraryTabs({ destination }) {
+  const [activeTab, setActiveTab] = useState("view");
+  const [itineraries, setItineraries] = useState([]);
+
+  const fetchItineraries = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/tripItineraries?destination=${destination}`
+      );
+      setItineraries(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchItineraries();
+  }, [destination]);
+
+  const handleItineraryCreated = async () => {
+    await fetchItineraries();
+    setActiveTab("view");
+  };
+
+  return (
+    <div className="mt-4">
+      <ul className="nav nav-tabs">
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "view" ? "active" : ""}`}
+            onClick={() => setActiveTab("view")}
+          >
+            View Itineraries
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "create" ? "active" : ""}`}
+            onClick={() => setActiveTab("create")}
+          >
+            Create Itinerary
+          </button>
+        </li>
+      </ul>
+
+      <div className="tab-content mt-4">
+        {activeTab === "view" && (
+          itineraries.length > 0 ? (
+            <ItineraryList itineraries={itineraries} />
+          ) : (
+            <div className="text-center py-4">
+              <p className="text-muted">No itineraries for {destination} yet.</p>
+              <button
+                className="btn btn-primary"
+                onClick={() => setActiveTab("create")}
+              >
+                Create Itinerary
+              </button>
+            </div>
+          )
+        )}
+
+        {activeTab === "create" && (
+          <CreateItinerary
+            destination={destination}
+            onItineraryCreated={handleItineraryCreated}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+import { useState } from "react";
+import axios from "axios";
+
+export default function CreateItinerary({ destination, onItineraryCreated }) {
+  const [formData, setFormData] = useState({
+    duration: "",
+    lodging: "",
+    dining: "",
+    activities: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/tripItineraries", {
+        destination,
+        ...formData,
+        activities: formData.activities.split(",").map((a) => a.trim())
+      });
+      onItineraryCreated();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
+      <h5>Create Itinerary for {destination}</h5>
+      <div className="mb-3">
+        <label className="form-label">Duration</label>
+        <input
+          type="text"
+          name="duration"
+          className="form-control"
+          value={formData.duration}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Lodging</label>
+        <input
+          type="text"
+          name="lodging"
+          className="form-control"
+          value={formData.lodging}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Dining</label>
+        <input
+          type="text"
+          name="dining"
+          className="form-control"
+          value={formData.dining}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-3">
+        <label className="form-label">Activities (comma separated)</label>
+        <input
+          type="text"
+          name="activities"
+          className="form-control"
+          value={formData.activities}
+          onChange={handleChange}
+        />
+      </div>
+      <button type="submit" className="btn btn-success">
+        Save Itinerary
+      </button>
+    </form>
+  );
+}
+
