@@ -1,3 +1,26 @@
+{
+  "tripItineraries": [
+    {
+      "id": 1,
+      "destination": "Bali",
+      "duration": "7 days",
+      "activities": ["Surfing", "Snorkeling"],
+      "lodging": "Luxury villa",
+      "dining": "Local cuisine"
+    },
+    {
+      "id": 2,
+      "destination": "Tokyo",
+      "duration": "5 days",
+      "activities": ["City tour", "Temple visit"],
+      "lodging": "Business hotel",
+      "dining": "Sushi restaurants"
+    }
+  ]
+}
+
+
+
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
