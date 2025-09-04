@@ -331,3 +331,103 @@ export default function ItineraryList({ destinationId }) {
     </div>
   );
 }
+
+
+
+
+
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+
+const CreateItinerary = () => {
+  const { destinationId } = useParams();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    destination: "",
+    duration: "",
+    activities: "",
+    lodging: "",
+    dining: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post("http://localhost:3000/tripItineraries", {
+        ...formData,
+        destinationId, // link itinerary to destination
+        activities: formData.activities.split(","),
+      });
+
+      // ✅ Instead of onItineraryCreated() → just navigate back
+      navigate(-1); // goes back to DestinationDetails
+    } catch (error) {
+      console.error("Error creating itinerary", error);
+    }
+  };
+
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Create Itinerary</h2>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <input
+          type="text"
+          name="destination"
+          placeholder="Destination"
+          value={formData.destination}
+          onChange={handleChange}
+          className="border p-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          name="duration"
+          placeholder="Duration"
+          value={formData.duration}
+          onChange={handleChange}
+          className="border p-2 w-full"
+          required
+        />
+        <input
+          type="text"
+          name="activities"
+          placeholder="Activities (comma separated)"
+          value={formData.activities}
+          onChange={handleChange}
+          className="border p-2 w-full"
+        />
+        <input
+          type="text"
+          name="lodging"
+          placeholder="Lodging"
+          value={formData.lodging}
+          onChange={handleChange}
+          className="border p-2 w-full"
+        />
+        <input
+          type="text"
+          name="dining"
+          placeholder="Dining"
+          value={formData.dining}
+          onChange={handleChange}
+          className="border p-2 w-full"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Create
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default CreateItinerary;
