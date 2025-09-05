@@ -1,3 +1,128 @@
+const tripItineraries = [
+  {
+    "id": 1,
+    "destinationId": 1001,
+    "destination": "Bali",
+    "duration": "7 days",
+    "activities": ["Surfing", "Snorkeling"],
+    "lodging": "Luxury villa",
+    "dining": "Local cuisine"
+  },
+  {
+    "id": 2,
+    "destinationId": 1002,
+    "destination": "Paris",
+    "duration": "5 days",
+    "activities": ["Museum tours", "Seine River Cruise"],
+    "lodging": "Boutique hotel",
+    "dining": "French gourmet"
+  },
+  {
+    "id": 3,
+    "destinationId": 1003,
+    "destination": "Rome",
+    "duration": "6 days",
+    "activities": ["Colosseum tour", "Vatican visit"],
+    "lodging": "Historic inn",
+    "dining": "Traditional Italian"
+  },
+  {
+    "id": 4,
+    "destinationId": 1004,
+    "destination": "Dubai",
+    "duration": "5 days",
+    "activities": ["Desert safari", "Burj Khalifa visit"],
+    "lodging": "Luxury hotel",
+    "dining": "Middle Eastern cuisine"
+  },
+  {
+    "id": 5,
+    "destinationId": 1005,
+    "destination": "Goa",
+    "duration": "4 days",
+    "activities": ["Beach parties", "Water sports"],
+    "lodging": "Beach resort",
+    "dining": "Seafood specialties"
+  },
+  {
+    "id": 6,
+    "destinationId": 1006,
+    "destination": "Hawaii",
+    "duration": "7 days",
+    "activities": ["Volcano hike", "Surfing"],
+    "lodging": "Beachfront villa",
+    "dining": "Hawaiian fusion"
+  },
+  {
+    "id": 7,
+    "destinationId": 1007,
+    "destination": "Los Angeles",
+    "duration": "5 days",
+    "activities": ["Hollywood tour", "Santa Monica Beach"],
+    "lodging": "City hotel",
+    "dining": "American cuisine"
+  },
+  {
+    "id": 8,
+    "destinationId": 1008,
+    "destination": "Rome",
+    "duration": "6 days",
+    "activities": ["Ancient ruins", "City walking tours"],
+    "lodging": "Heritage hotel",
+    "dining": "Pasta & wine"
+  },
+  {
+    "id": 9,
+    "destinationId": 1009,
+    "destination": "London",
+    "duration": "5 days",
+    "activities": ["Buckingham Palace tour", "Thames cruise"],
+    "lodging": "Royal-style hotel",
+    "dining": "British pub classics"
+  },
+  {
+    "id": 10,
+    "destinationId": 1010,
+    "destination": "New York",
+    "duration": "6 days",
+    "activities": ["Broadway show", "Central Park stroll"],
+    "lodging": "Luxury skyscraper hotel",
+    "dining": "New York deli & fine dining"
+  },
+  {
+    "id": 11,
+    "destinationId": 1011,
+    "destination": "San Francisco",
+    "duration": "5 days",
+    "activities": ["Golden Gate tour", "Alcatraz visit"],
+    "lodging": "Harbor-view hotel",
+    "dining": "Seafood & Californian cuisine"
+  },
+  {
+    "id": 12,
+    "destinationId": 1012,
+    "destination": "Switzerland",
+    "duration": "7 days",
+    "activities": ["Skiing", "Mountain hikes"],
+    "lodging": "Alpine lodge",
+    "dining": "Swiss fondue & chocolate"
+  },
+  {
+    "id": 13,
+    "destinationId": 1013,
+    "destination": "Sydney",
+    "duration": "6 days",
+    "activities": ["Opera House tour", "Bondi Beach"],
+    "lodging": "Harbor hotel",
+    "dining": "Modern Australian"
+  }
+]
+
+
+
+
+
+
 {
   "destinationsData": [
     {
