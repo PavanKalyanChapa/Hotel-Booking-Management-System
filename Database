@@ -1,0 +1,539 @@
+{
+  "destinationsData": [
+    {
+      "destinationId": 1001,
+      "title": "Bali Destination Guide",
+      "destinationName": "Bali, Indonesia",
+      "photo": "./BALI.png",
+      "destinationSummary": "Explore the beautiful beaches and rich culture of Bali with our comprehensive guide.",
+      "rating": 4,
+      "history": "Bali has been inhabited since around 2000 BC by Austronesian people migrating from Taiwan through the Philippines. Over centuries, it became deeply influenced by Indian Hinduism and Buddhism, shaping its art, architecture, and social structure. During the Majapahit Empire in the 13th century, Bali thrived as a hub of religion and trade. Later, Dutch colonial rule in the 19th century impacted the island’s governance, but Balinese traditions remained strong. Today, Bali is celebrated globally as a spiritual, cultural, and tourist hotspot.",
+      "culture": "Balinese culture is deeply rooted in Hindu traditions mixed with indigenous customs. Daily offerings known as 'canang sari' are seen everywhere, reflecting gratitude to the gods. Dance forms like Barong and Legong tell ancient myths, while gamelan music accompanies temple rituals. Festivals like Nyepi (Day of Silence) showcase the island’s spiritual balance. Community life is organized around 'banjar' (local village councils), emphasizing harmony between humans, nature, and the divine.",
+      "touristAttractions": [
+        "Tanah Lot Temple",
+        "Uluwatu Temple",
+        "Tegalalang Rice Terraces",
+        "Mount Batur",
+        "Ubud Monkey Forest",
+        "Besakih Temple",
+        "Seminyak Beach"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "Four Seasons Resort Bali", "rating": 4.9, "price": 400 },
+        { "hotelName": "COMO Shambhala Estate", "rating": 4.8, "price": 300 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Locavore", "rating": 4.9, "cuisine": "Modern Indonesian" },
+        { "restaurantName": "Mozaic Restaurant", "rating": 4.8, "cuisine": "French-Asian Fusion" }
+      ],
+      "reviews": [
+        { "user": "user123", "rating": 5, "comment": "Amazing guide, helped me plan my trip perfectly!" },
+        { "user": "user456", "rating": 4, "comment": "Bali is beautiful but very crowded." }
+      ]
+    },
+    {
+      "destinationId": 1002,
+      "title": "Paris Destination Guide",
+      "destinationName": "Paris, France",
+      "photo": "./PARIS.png",
+      "destinationSummary": "Discover the romance, art, and charm of Paris with our ultimate guide.",
+      "rating": 5,
+      "history": "Paris traces its origins to around 250 BC when it was settled by a Celtic tribe known as the Parisii. The Romans conquered it and established the city of Lutetia, which grew into a key trade center. During the Middle Ages, Paris became a center for religion, learning, and politics. The Renaissance brought architectural wonders like the Louvre. The French Revolution in 1789 turned Paris into the heart of liberty and democracy. Today, it remains a global capital of art, fashion, culture, and diplomacy.",
+      "culture": "Parisian culture is synonymous with elegance, intellectualism, and artistic expression. Cafés are central to social life, where writers and philosophers like Voltaire and Sartre once gathered. French cuisine, from croissants to Michelin-star dining, is integral to daily life. Parisians value art deeply, with the Louvre and Musée d’Orsay housing masterpieces. Fashion week and haute couture also define the city’s global cultural influence.",
+      "touristAttractions": [
+        "Eiffel Tower",
+        "Louvre Museum",
+        "Notre-Dame Cathedral",
+        "Champs-Élysées",
+        "Seine River Cruise",
+        "Sacré-Cœur Basilica",
+        "Palace of Versailles"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "Ritz Paris", "rating": 4.9, "price": 600 },
+        { "hotelName": "Le Meurice", "rating": 4.8, "price": 500 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Le Jules Verne", "rating": 4.8, "cuisine": "French Gourmet" },
+        { "restaurantName": "Epicure", "rating": 4.9, "cuisine": "Haute French Cuisine" }
+      ],
+      "reviews": [
+        { "user": "traveler789", "rating": 5, "comment": "Paris exceeded all my expectations!" },
+        { "user": "wanderlust22", "rating": 4, "comment": "Beautiful city but very expensive." }
+      ]
+    },
+    {
+      "destinationId": 1003,
+      "title": "Rome Destination Guide",
+      "destinationName": "Rome, Italy",
+      "photo": "./ROME.png",
+      "destinationSummary": "Step back into history with Rome’s iconic ruins and vibrant lifestyle.",
+      "rating": 5,
+      "history": "Rome, known as the Eternal City, was founded in 753 BC and became the heart of the Roman Empire, which dominated Europe, North Africa, and the Middle East for centuries. The empire contributed immensely to law, governance, architecture, and engineering. With the fall of Rome in 476 AD, the city transitioned into the spiritual center of Christianity as the seat of the Papacy. The Renaissance further enriched Rome with art and architecture from masters like Michelangelo. Today, it’s a living museum where ancient and modern worlds meet.",
+      "culture": "Roman culture blends classical traditions with modern Italian lifestyle. It is deeply Catholic, with the Vatican influencing spiritual and cultural life. Food and family are central—pasta, pizza, and wine are part of everyday life. Romans value festivals, art, and open-air living. Music, cinema, and fashion continue to thrive alongside traditions rooted in antiquity.",
+      "touristAttractions": [
+        "Colosseum",
+        "Roman Forum",
+        "Pantheon",
+        "Trevi Fountain",
+        "Vatican City",
+        "St. Peter’s Basilica",
+        "Sistine Chapel"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "Hotel de Russie", "rating": 4.9, "price": 450 },
+        { "hotelName": "The St. Regis Rome", "rating": 4.8, "price": 500 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "La Pergola", "rating": 4.9, "cuisine": "Italian Fine Dining" },
+        { "restaurantName": "Roscioli", "rating": 4.7, "cuisine": "Traditional Roman" }
+      ],
+      "reviews": [
+        { "user": "historybuff88", "rating": 5, "comment": "Walking through Rome feels like walking in an open-air museum." },
+        { "user": "foodie202", "rating": 4, "comment": "Delicious food but attractions are crowded." }
+      ]
+    },
+    {
+      "destinationId": 1004,
+      "title": "Dubai Destination Guide",
+      "destinationName": "Dubai, UAE",
+      "photo": "./DUBAI.png",
+      "destinationSummary": "Experience futuristic architecture and Arabian culture in Dubai.",
+      "rating": 5,
+      "history": "Dubai began as a small fishing and trading village along the Arabian Gulf. In the early 20th century, it thrived as a pearl diving and trading hub. The discovery of oil in 1966 transformed Dubai, fueling rapid modernization. Under visionary leadership, Dubai diversified into trade, tourism, finance, and real estate, becoming one of the fastest-growing cities in the world. Today, it is known for innovation, luxury, and global business connections.",
+      "culture": "Dubai’s culture is a blend of traditional Emirati customs and modern cosmopolitan influences. Islamic values guide daily life, with traditions seen in hospitality, cuisine, and festivals like Eid. Emirati heritage is preserved through falconry, camel racing, and dhow sailing, while modern Dubai embraces international cuisines, luxury fashion, and world-class entertainment.",
+      "touristAttractions": [
+        "Burj Khalifa",
+        "Dubai Mall",
+        "Palm Jumeirah",
+        "Dubai Marina",
+        "Burj Al Arab",
+        "Desert Safari",
+        "Dubai Creek"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "Burj Al Arab Jumeirah", "rating": 4.9, "price": 900 },
+        { "hotelName": "Atlantis The Palm", "rating": 4.8, "price": 600 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Pierchic", "rating": 4.8, "cuisine": "Seafood" },
+        { "restaurantName": "Al Hadheerah", "rating": 4.7, "cuisine": "Traditional Middle Eastern" }
+      ],
+      "reviews": [
+        { "user": "luxurytraveler", "rating": 5, "comment": "Dubai is a paradise for luxury lovers." },
+        { "user": "desertdreamer", "rating": 4, "comment": "Amazing city, but quite expensive." }
+      ]
+    },
+    {
+      "destinationId": 1005,
+      "title": "Goa Destination Guide",
+      "destinationName": "Goa, India",
+      "photo": "./GOA.png",
+      "destinationSummary": "Relax on sandy beaches and enjoy vibrant nightlife in Goa.",
+      "rating": 4,
+      "history": "Goa’s history dates back to prehistoric times and later flourished under Mauryan and Satavahana dynasties. In the early 16th century, the Portuguese conquered Goa, ruling for over 450 years. This colonial past left a deep imprint on Goa’s architecture, cuisine, and culture. Goa became part of independent India in 1961 and has since evolved into a popular global tourist destination, known for its beaches and laid-back lifestyle.",
+      "culture": "Goan culture is a fusion of Indian and Portuguese influences. Catholic churches, colorful festivals like Carnival, and fado music reflect Portuguese legacy, while Hindu temples and rituals remain central to local life. Seafood, feni (local liquor), and spicy curries are staples of Goan cuisine. Music, dance, and yoga also contribute to Goa’s unique cultural identity.",
+      "touristAttractions": [
+        "Baga Beach",
+        "Basilica of Bom Jesus",
+        "Aguada Fort",
+        "Anjuna Flea Market",
+        "Dudhsagar Waterfalls",
+        "Chapora Fort",
+        "Palolem Beach"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "Taj Exotica Resort & Spa", "rating": 4.9, "price": 350 },
+        { "hotelName": "Alila Diwa Goa", "rating": 4.7, "price": 250 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Fisherman’s Wharf", "rating": 4.8, "cuisine": "Seafood & Goan" },
+        { "restaurantName": "Gunpowder", "rating": 4.7, "cuisine": "South Indian" }
+      ],
+      "reviews": [
+        { "user": "beachlover", "rating": 5, "comment": "The beaches and nightlife were unforgettable." },
+        { "user": "culturefan", "rating": 4, "comment": "Loved the fusion of Portuguese and Indian culture." }
+      ]
+    },
+    {
+      "destinationId": 1006,
+      "title": "Hawaii Destination Guide",
+      "destinationName": "Hawaii, USA",
+      "photo": "./HAWAII.png",
+      "destinationSummary": "Embrace tropical paradise and Polynesian traditions in Hawaii.",
+      "rating": 5,
+      "history": "Hawaii’s islands were settled by Polynesians around 1,500 years ago, developing a rich society based on agriculture, fishing, and navigation. In 1778, Captain James Cook arrived, introducing Western influence. Hawaii later became a kingdom, then a republic, and was annexed by the United States in 1898. It became the 50th U.S. state in 1959. Today, Hawaii remains a symbol of natural beauty, resilience, and cultural pride.",
+      "culture": "Hawaiian culture emphasizes 'aloha'—love, compassion, and respect. Traditions like hula dancing, luaus, and slack-key guitar music are integral to daily life. The Hawaiian language and chants preserve ancestral wisdom. Surfing, which originated in Hawaii, is a cultural sport. Despite modernization, Hawaiians maintain a deep spiritual connection to the land ('aina) and ocean.",
+      "touristAttractions": [
+        "Waikiki Beach",
+        "Pearl Harbor",
+        "Haleakalā National Park",
+        "Na Pali Coast",
+        "Volcanoes National Park",
+        "Road to Hana",
+        "Diamond Head"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "Four Seasons Resort Maui", "rating": 4.9, "price": 700 },
+        { "hotelName": "Halekulani Hotel", "rating": 4.8, "price": 500 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Alan Wong’s Honolulu", "rating": 4.9, "cuisine": "Modern Hawaiian" },
+        { "restaurantName": "Mama’s Fish House", "rating": 4.8, "cuisine": "Seafood" }
+      ],
+      "reviews": [
+        { "user": "surferboy", "rating": 5, "comment": "Best waves and most stunning landscapes." },
+        { "user": "naturelover", "rating": 5, "comment": "The volcanic scenery is breathtaking." }
+      ]
+    },
+    {
+      "destinationId": 1007,
+      "title": "Los Angeles Destination Guide",
+      "destinationName": "Los Angeles, USA",
+      "photo": "./LA.png",
+      "destinationSummary": "Live the Hollywood dream and explore diverse neighborhoods in LA.",
+      "rating": 4,
+      "history": "Los Angeles was founded in 1781 by Spanish settlers as El Pueblo de Nuestra Señora la Reina de los Ángeles. After Mexican independence, it became part of Mexico until the U.S. annexed California in 1848. The discovery of oil and the rise of Hollywood in the 20th century propelled LA into global fame. Today, it is a hub for entertainment, technology, and cultural diversity.",
+      "culture": "LA’s culture is eclectic, shaped by Hollywood glamour, Latino heritage, and global immigrant communities. The city thrives on film, music, art, and innovation. Street food, yoga, and surfing reflect its lifestyle. LA’s neighborhoods—like Beverly Hills, Venice Beach, and Koreatown—each offer unique cultural experiences.",
+      "touristAttractions": [
+        "Hollywood Walk of Fame",
+        "Griffith Observatory",
+        "Santa Monica Pier",
+        "Getty Center",
+        "Universal Studios Hollywood",
+        "Rodeo Drive",
+        "Venice Beach"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "The Beverly Hills Hotel", "rating": 4.9, "price": 600 },
+        { "hotelName": "Hotel Bel-Air", "rating": 4.8, "price": 550 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Bestia", "rating": 4.8, "cuisine": "Italian" },
+        { "restaurantName": "République", "rating": 4.7, "cuisine": "French-Californian" }
+      ],
+      "reviews": [
+        { "user": "moviefan", "rating": 5, "comment": "Hollywood was a dream come true!" },
+        { "user": "beachgoer", "rating": 4, "comment": "Great beaches but heavy traffic everywhere." }
+      ]
+    },
+    {
+      "destinationId": 1008,
+      "title": "London Destination Guide",
+      "destinationName": "London, UK",
+      "photo": "./LONDON.png",
+      "destinationSummary": "Explore history, royalty, and modern culture in London.",
+      "rating": 5,
+      "history": "London was founded by the Romans as Londinium around AD 43. It became an important trading port and later the capital of England. Over centuries, it witnessed the Norman conquest, the rise of the British Empire, the Great Fire of London in 1666, and the Blitz during World War II. London has remained a symbol of resilience and cultural power, influencing politics, literature, and global commerce.",
+      "culture": "London is a melting pot of cultures, with over 300 languages spoken. Traditional English customs blend with immigrant influences. Theatre, fashion, and literature thrive alongside football and pub culture. Afternoon tea, the monarchy, and landmarks like Big Ben reflect British heritage, while neighborhoods like Shoreditch and Camden showcase modern creativity.",
+      "touristAttractions": [
+        "Big Ben",
+        "Tower of London",
+        "Buckingham Palace",
+        "London Eye",
+        "British Museum",
+        "Westminster Abbey",
+        "Hyde Park"
+      ],
+      "recommendedHotels": [
+        { "hotelName": "The Savoy", "rating": 4.9, "price": 500 },
+        { "hotelName": "Claridge’s", "rating": 4.8, "price": 450 }
+      ],
+      "recommendedRestaurants": [
+        { "restaurantName": "Dishoom", "rating": 4.8, "cuisine": "Indian-British Fusion" },
+        { "restaurantName": "Restaurant Gordon Ramsay", "rating": 4.9, "cuisine": "Modern British" }
+      ],
+      "reviews": [
+        { "user": "historyseeker", "rating": 5, "comment": "Loved exploring the mix of old and new London." },
+        { "user": "royaltyfan", "rating": 4, "comment": "Buckingham Palace was stunning but very crowded." }
+      ]
+    },
+    {
+      "destinationId": 1009,
+      "title": "New York Destination Guide",
+      "destinationName": "New York, USA",
+      "photo": "./NY.png",
+      "destinationSummary": "Experience the city that never sleeps with endless attractions.",
+      "rating": 5,
+      "history": "New York
+
+
+{
+  "destinationsData": [
+    {
+      "destinationId": 1009,
+      "title": "London Destination Guide",
+      "destinationName": "London, United Kingdom",
+      "photo": "./LONDON.png",
+      "destinationSummary": "Dive into the royal heritage, bustling markets, and vibrant culture of London.",
+      "rating": 5,
+      "history": "London was founded by the Romans as Londinium in AD 47. It quickly grew into a vital port and trade hub. During the Middle Ages, it became the heart of England’s monarchy, politics, and commerce. The Great Fire of 1666 destroyed much of the medieval city but also led to modern rebuilding under architect Christopher Wren. In the 19th century, London became the capital of the vast British Empire. Today, it is a global financial, cultural, and political powerhouse, blending centuries of history with modern innovation.",
+      "culture": "London is a melting pot of cultures with over 300 languages spoken. It is known for its royal traditions, theatre (especially Shakespeare’s Globe and the West End), and diverse culinary scene ranging from traditional fish and chips to Michelin-starred dining. The city is home to iconic music and fashion movements, and museums like the British Museum and Tate Modern showcase global heritage. Street markets, festivals, and multicultural neighborhoods add to London’s vibrant identity.",
+      "touristAttractions": [
+        "Tower of London",
+        "Buckingham Palace",
+        "Big Ben & Houses of Parliament",
+        "London Eye",
+        "British Museum",
+        "Tower Bridge",
+        "Westminster Abbey"
+      ],
+      "recommendedHotels": [
+        {
+          "hotelName": "The Savoy",
+          "rating": 4.9,
+          "price": 550
+        },
+        {
+          "hotelName": "The Ritz London",
+          "rating": 4.8,
+          "price": 600
+        }
+      ],
+      "recommendedRestaurants": [
+        {
+          "restaurantName": "Dishoom",
+          "rating": 4.8,
+          "cuisine": "Indian-British Fusion"
+        },
+        {
+          "restaurantName": "Gordon Ramsay Restaurant",
+          "rating": 4.9,
+          "cuisine": "Modern European"
+        }
+      ],
+      "reviews": [
+        {
+          "user": "travelerUK",
+          "rating": 5,
+          "comment": "Loved the mix of history and modern attractions!"
+        },
+        {
+          "user": "globetrotter77",
+          "rating": 4,
+          "comment": "Amazing city but quite crowded in tourist areas."
+        }
+      ]
+    },
+    {
+      "destinationId": 1010,
+      "title": "New York Destination Guide",
+      "destinationName": "New York, USA",
+      "photo": "./NEWYORK.png",
+      "destinationSummary": "The city that never sleeps offers skyscrapers, Broadway, and endless adventures.",
+      "rating": 5,
+      "history": "New York was first settled by the Dutch in 1624 and called New Amsterdam. In 1664, the British seized it and renamed it New York. It became one of the most important ports in America and played a vital role during the Revolutionary War. The 19th and early 20th centuries brought waves of immigrants through Ellis Island, shaping the city’s multicultural identity. By the 20th century, New York became a global hub of finance, media, and culture. Iconic landmarks like the Statue of Liberty and Empire State Building symbolize its history and growth.",
+      "culture": "New York City is one of the most diverse places on earth, with communities from virtually every nation. Its culture thrives in Broadway theatre, Wall Street finance, world-class museums like the Met and MoMA, and unique borough identities. The city is known for jazz, hip-hop, street art, and iconic foods such as New York pizza and bagels. Festivals, parades, and cultural institutions make it a true melting pot of traditions.",
+      "touristAttractions": [
+        "Statue of Liberty",
+        "Times Square",
+        "Central Park",
+        "Empire State Building",
+        "Brooklyn Bridge",
+        "Metropolitan Museum of Art",
+        "Broadway"
+      ],
+      "recommendedHotels": [
+        {
+          "hotelName": "The Plaza Hotel",
+          "rating": 4.9,
+          "price": 650
+        },
+        {
+          "hotelName": "Four Seasons New York",
+          "rating": 4.8,
+          "price": 700
+        }
+      ],
+      "recommendedRestaurants": [
+        {
+          "restaurantName": "Katz’s Delicatessen",
+          "rating": 4.7,
+          "cuisine": "New York Deli"
+        },
+        {
+          "restaurantName": "Per Se",
+          "rating": 4.9,
+          "cuisine": "French-American Fine Dining"
+        }
+      ],
+      "reviews": [
+        {
+          "user": "citydreamer",
+          "rating": 5,
+          "comment": "Absolutely loved the vibe of Times Square at night!"
+        },
+        {
+          "user": "foodloverNY",
+          "rating": 4,
+          "comment": "Great food everywhere, but very expensive hotels."
+        }
+      ]
+    },
+    {
+      "destinationId": 1011,
+      "title": "San Francisco Destination Guide",
+      "destinationName": "San Francisco, USA",
+      "photo": "./SANFRANCISCO.png",
+      "destinationSummary": "Experience the Golden Gate, rolling hills, and vibrant tech culture of San Francisco.",
+      "rating": 4,
+      "history": "San Francisco was founded in 1776 when Spanish colonists established the Presidio and Mission San Francisco de Asís. The 1849 Gold Rush transformed the small town into a booming city, attracting fortune seekers from around the world. It became a hub of trade, immigration, and innovation. The 1906 earthquake and fire destroyed much of the city, but it was rebuilt quickly. In the 20th century, San Francisco became known for counterculture movements, LGBTQ+ activism, and later as the heart of Silicon Valley’s tech revolution.",
+      "culture": "San Francisco blends artistic expression, progressive ideals, and high-tech innovation. Known for its tolerance and creativity, the city is home to iconic music, hippie culture from the 1960s, and diverse immigrant communities. Its culinary scene is influenced by Asian, Mexican, and Californian cuisines. Modern San Francisco thrives on innovation, with tech startups shaping its culture alongside historic landmarks and neighborhoods like Chinatown and Haight-Ashbury.",
+      "touristAttractions": [
+        "Golden Gate Bridge",
+        "Alcatraz Island",
+        "Fisherman’s Wharf",
+        "Chinatown",
+        "Lombard Street",
+        "Union Square",
+        "Golden Gate Park"
+      ],
+      "recommendedHotels": [
+        {
+          "hotelName": "Fairmont San Francisco",
+          "rating": 4.8,
+          "price": 450
+        },
+        {
+          "hotelName": "The Ritz-Carlton San Francisco",
+          "rating": 4.9,
+          "price": 500
+        }
+      ],
+      "recommendedRestaurants": [
+        {
+          "restaurantName": "Tadich Grill",
+          "rating": 4.7,
+          "cuisine": "Seafood & American"
+        },
+        {
+          "restaurantName": "Zuni Café",
+          "rating": 4.8,
+          "cuisine": "Californian Cuisine"
+        }
+      ],
+      "reviews": [
+        {
+          "user": "techtraveler",
+          "rating": 5,
+          "comment": "Loved the Golden Gate views and Alcatraz tour!"
+        },
+        {
+          "user": "wanderer101",
+          "rating": 4,
+          "comment": "Great city, but the hills can be exhausting."
+        }
+      ]
+    },
+    {
+      "destinationId": 1012,
+      "title": "Switzerland Destination Guide",
+      "destinationName": "Switzerland",
+      "photo": "./SWITZERLAND.png",
+      "destinationSummary": "Explore snow-capped peaks, serene lakes, and charming alpine villages.",
+      "rating": 5,
+      "history": "Switzerland’s history dates back to ancient Celtic tribes before becoming part of the Roman Empire. In 1291, three cantons formed the Swiss Confederation for mutual defense, which expanded over centuries. Switzerland became known for its neutrality, especially during the World Wars, when it avoided conflict while serving as a hub for diplomacy and banking. Its mountainous terrain has shaped both its independence and culture. Today, it is recognized for stability, innovation, and natural beauty.",
+      "culture": "Swiss culture reflects its blend of German, French, Italian, and Romansh influences. It is known for precision (watches), cuisine (cheese fondue, chocolate), and alpine traditions. Festivals, yodeling, and folk music remain important in rural areas, while cities host world-class art and music. The Swiss value punctuality, cleanliness, and neutrality. Outdoor activities like skiing and hiking are integral parts of life.",
+      "touristAttractions": [
+        "Matterhorn",
+        "Lake Geneva",
+        "Jungfraujoch",
+        "Château de Chillon",
+        "Swiss Alps",
+        "Rhine Falls",
+        "Lucerne Old Town"
+      ],
+      "recommendedHotels": [
+        {
+          "hotelName": "Badrutt’s Palace Hotel",
+          "rating": 4.9,
+          "price": 700
+        },
+        {
+          "hotelName": "The Dolder Grand",
+          "rating": 4.8,
+          "price": 650
+        }
+      ],
+      "recommendedRestaurants": [
+        {
+          "restaurantName": "Restaurant de l’Hôtel de Ville",
+          "rating": 4.9,
+          "cuisine": "Gourmet French-Swiss"
+        },
+        {
+          "restaurantName": "Kronenhalle",
+          "rating": 4.8,
+          "cuisine": "Traditional Swiss"
+        }
+      ],
+      "reviews": [
+        {
+          "user": "snowlover",
+          "rating": 5,
+          "comment": "Skiing in the Alps was unforgettable!"
+        },
+        {
+          "user": "naturefan",
+          "rating": 5,
+          "comment": "Loved the lakes and breathtaking mountains."
+        }
+      ]
+    },
+    {
+      "destinationId": 1013,
+      "title": "Sydney Destination Guide",
+      "destinationName": "Sydney, Australia",
+      "photo": "./SYDNEY.png",
+      "destinationSummary": "Enjoy iconic harbors, stunning beaches, and modern Australian lifestyle.",
+      "rating": 5,
+      "history": "Sydney was founded in 1788 as the site of the first British penal colony in Australia. It grew from a settlement of convicts into a thriving city, attracting immigrants from around the world. The discovery of gold in the 19th century boosted its growth, and Sydney developed into Australia’s largest and most cosmopolitan city. It hosted the 2000 Summer Olympics, showcasing its global significance. Today, it is the cultural and financial capital of Australia.",
+      "culture": "Sydney’s culture blends Indigenous Australian heritage with modern multiculturalism. The Aboriginal peoples’ traditions are celebrated in art and performances, while immigration has introduced Asian, European, and Pacific influences. The city thrives on outdoor living, with beaches, barbecues, and festivals central to daily life. Sydney also leads in contemporary art, theatre, and sports, with rugby and cricket as popular pastimes.",
+      "touristAttractions": [
+        "Sydney Opera House",
+        "Sydney Harbour Bridge",
+        "Bondi Beach",
+        "Darling Harbour",
+        "Taronga Zoo",
+        "Royal Botanic Gardens",
+        "Blue Mountains"
+      ],
+      "recommendedHotels": [
+        {
+          "hotelName": "Park Hyatt Sydney",
+          "rating": 4.9,
+          "price": 600
+        },
+        {
+          "hotelName": "Shangri-La Hotel Sydney",
+          "rating": 4.8,
+          "price": 500
+        }
+      ],
+      "recommendedRestaurants": [
+        {
+          "restaurantName": "Quay",
+          "rating": 4.9,
+          "cuisine": "Modern Australian"
+        },
+        {
+          "restaurantName": "Tetsuya’s",
+          "rating": 4.8,
+          "cuisine": "Japanese-French Fusion"
+        }
+      ],
+      "reviews": [
+        {
+          "user": "aussielover",
+          "rating": 5,
+          "comment": "Sydney’s beaches are absolutely stunning!"
+        },
+        {
+          "user": "cityhopper",
+          "rating": 4,
+          "comment": "Opera House was breathtaking but tours are pricey."
+        }
+      ]
+    }
+  ]
+}
