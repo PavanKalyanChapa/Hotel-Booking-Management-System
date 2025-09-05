@@ -1,94 +1,117 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { Form, Button } from "react-bootstrap";
 
-export default function CreateItinerary({ destination, onItineraryCreated }) {
-  const [formData, setFormData] = useState({
+const CreateItinerary = () => {
+  const [itinerary, setItinerary] = useState({
+    id: "",
+    destinationId: "",
+    destination: "",
     duration: "",
     activities: "",
     lodging: "",
-    dining: ""
+    dining: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setItinerary({ ...itinerary, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
-      destinationId: destination.destinationId,
-      destination: destination.destinationName,
-      duration: formData.duration,
-      activities: formData.activities.split(",").map((a) => a.trim()),
-      lodging: formData.lodging,
-      dining: formData.dining
+    // Convert activities from comma-separated string → array
+    const formattedItinerary = {
+      ...itinerary,
+      id: Number(itinerary.id),
+      destinationId: Number(itinerary.destinationId),
+      activities: itinerary.activities.split(",").map((a) => a.trim()),
     };
 
     try {
-      await axios.post("http://localhost:5000/trip-itineraries", payload);
-      alert("Trip itinerary created successfully!");
-      onItineraryCreated();
+      await axios.post("http://localhost:5000/api/itineraries", formattedItinerary);
+      alert("Itinerary created successfully!");
+      setItinerary({
+        id: "",
+        destinationId: "",
+        destination: "",
+        duration: "",
+        activities: "",
+        lodging: "",
+        dining: "",
+      });
     } catch (error) {
-      console.error(error);
+      console.error("Error creating itinerary:", error);
       alert("Failed to create itinerary");
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>Duration</Form.Label>
-        <Form.Control
+    <div style={{ maxWidth: "500px", margin: "auto" }}>
+      <h2>Create Itinerary</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="number"
+          name="id"
+          placeholder="Itinerary ID"
+          value={itinerary.id}
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <input
+          type="number"
+          name="destinationId"
+          placeholder="Destination ID"
+          value={itinerary.destinationId}
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <input
+          type="text"
+          name="destination"
+          placeholder="Destination Name"
+          value={itinerary.destination}
+          onChange={handleChange}
+        />
+        <br />
+        <input
           type="text"
           name="duration"
-          value={formData.duration}
+          placeholder="Duration (e.g., 7 days)"
+          value={itinerary.duration}
           onChange={handleChange}
-          placeholder="e.g. 7 days"
-          required
         />
-      </Form.Group>
-
-      <Form.Group className="mb-3">
-        <Form.Label>Activities (comma separated)</Form.Label>
-        <Form.Control
+        <br />
+        <input
           type="text"
           name="activities"
-          value={formData.activities}
+          placeholder="Activities (comma separated)"
+          value={itinerary.activities}
           onChange={handleChange}
-          placeholder="Surfing, Snorkeling"
-          required
         />
-      </Form.Group>
-
-      <Form.Group className="mb-3">
-        <Form.Label>Lodging</Form.Label>
-        <Form.Control
+        <br />
+        <input
           type="text"
           name="lodging"
-          value={formData.lodging}
+          placeholder="Lodging"
+          value={itinerary.lodging}
           onChange={handleChange}
-          placeholder="Luxury villa"
-          required
         />
-      </Form.Group>
-
-      <Form.Group className="mb-3">
-        <Form.Label>Dining</Form.Label>
-        <Form.Control
+        <br />
+        <input
           type="text"
           name="dining"
-          value={formData.dining}
+          placeholder="Dining"
+          value={itinerary.dining}
           onChange={handleChange}
-          placeholder="Local cuisine"
-          required
         />
-      </Form.Group>
-
-      <Button type="submit" variant="primary">
-        Save Itinerary
-      </Button>
-    </Form>
+        <br />
+        <button type="submit">Create Itinerary</button>
+      </form>
+    </div>
   );
-}
+};
+
+export default CreateItinerary;
