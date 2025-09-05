@@ -1,0 +1,94 @@
+import { useState } from "react";
+import axios from "axios";
+import { Form, Button } from "react-bootstrap";
+
+export default function CreateItinerary({ destination, onItineraryCreated }) {
+  const [formData, setFormData] = useState({
+    duration: "",
+    activities: "",
+    lodging: "",
+    dining: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      destinationId: destination.destinationId,
+      destination: destination.destinationName,
+      duration: formData.duration,
+      activities: formData.activities.split(",").map((a) => a.trim()),
+      lodging: formData.lodging,
+      dining: formData.dining
+    };
+
+    try {
+      await axios.post("http://localhost:5000/trip-itineraries", payload);
+      alert("Trip itinerary created successfully!");
+      onItineraryCreated();
+    } catch (error) {
+      console.error(error);
+      alert("Failed to create itinerary");
+    }
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3">
+        <Form.Label>Duration</Form.Label>
+        <Form.Control
+          type="text"
+          name="duration"
+          value={formData.duration}
+          onChange={handleChange}
+          placeholder="e.g. 7 days"
+          required
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Activities (comma separated)</Form.Label>
+        <Form.Control
+          type="text"
+          name="activities"
+          value={formData.activities}
+          onChange={handleChange}
+          placeholder="Surfing, Snorkeling"
+          required
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Lodging</Form.Label>
+        <Form.Control
+          type="text"
+          name="lodging"
+          value={formData.lodging}
+          onChange={handleChange}
+          placeholder="Luxury villa"
+          required
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Dining</Form.Label>
+        <Form.Control
+          type="text"
+          name="dining"
+          value={formData.dining}
+          onChange={handleChange}
+          placeholder="Local cuisine"
+          required
+        />
+      </Form.Group>
+
+      <Button type="submit" variant="primary">
+        Save Itinerary
+      </Button>
+    </Form>
+  );
+}
